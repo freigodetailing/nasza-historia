@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nasza Historia</title>
+    <!-- Google Fonts: 'Caveat' for handwriting on torn paper, 'Inter' for UI -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .main-title {
+            text-align: center;
+            font-family: 'Caveat', cursive;
+            font-size: 4.5rem;
+            color: #4a4a4a;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            z-index: 10;
+            position: relative;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+            padding: 0 15px;
+        }
+    </style>
+</head>
+<body class="locked">
+    <!-- Wrota wejściowe -->
+    <div class="intro-gates" id="introGates">
+        <div class="gate left-gate"></div>
+        <div class="gate right-gate"></div>
+        <div class="gate-content">
+            <div class="intro-heart">
+                <h1>Nasza Opowieść</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="intro-hint">Przewijaj w dół <span>↓</span></div>
+
+    <div class="balloon-container">
+        <div class="heart-balloon">
+            <h1>Nasza Opowieść</h1>
+        </div>
+        <div class="balloon-tie"></div>
+    </div>
+
+    <div class="scroll-container" style="padding-top: 0;">
+        
+        <!-- Central Rope (Vertical) -->
+        <div class="central-rope"></div>
+
+        <div class="timeline-wrapper">
+            
+            <!-- Node 1 -->
+            <div class="memory-node">
+                <div class="hanging-item tilt-left">
+                    <div class="torn-paper">
+                        <h2>12.08.2023</h2>
+                        <p>To data, która dla nas obojga znaczy bardzo wiele. Jestem szczęśliwy z racji tego, że możemy razem dzielić się tym szczęściem, kochając się szczerze.</p>
+                    </div>
+                </div>
+                <div class="hanging-item tilt-right photo-item">
+                    <div class="photo-placeholder polaroid">
+                        <img src="galeria/1.jpg" alt="Wspomnienie 1" class="photo-inner-img">
+                        <div class="photo-caption">Fotobudka</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Node 2 -->
+            <div class="memory-node">
+                <div class="hanging-item tilt-left tilt-more photo-item">
+                    <div class="photo-placeholder polaroid">
+                        <img src="galeria/2.jpg" alt="Wspomnienie 2" class="photo-inner-img">
+                        <div class="photo-caption">Ten wzrok &lt;3</div>
+                    </div>
+                </div>
+                <div class="hanging-item tilt-right">
+                    <div class="torn-paper">
+                        <h2>Pierwsze kroki...</h2>
+                        <p>Gdy pierwszy raz Cię poznałem, sprawiłaś wrażenie zamkniętej na ludzi dziewczyny, która z jakiegoś powodu pałała do mnie nienawiścią... :&lt;</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Node 3 -->
+            <div class="memory-node">
+                <div class="hanging-item tilt-right">
+                    <div class="torn-paper">
+                        <h2>Nasze pierwsze chwile...</h2>
+                        <p>Z wakacji na wakacje mieliśmy okazję częściej się widywać. Choć początkowo oboje robiliśmy to niechętnie, pewnego dnia postanowiliśmy po prostu dobrze się bawić, mimo swojego towarzystwa.</p>
+                    </div>
+                </div>
+                <div class="hanging-item tilt-left tilt-more photo-item">
+                    <div class="photo-placeholder polaroid">
+                        <img src="galeria/3.jpg" alt="Wspomnienie 3" class="photo-inner-img">
+                        <div class="photo-caption">Załamka Timeee</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Node 4 -->
+            <div class="memory-node">
+                <div class="hanging-item tilt-left tilt-more photo-item">
+                    <div class="photo-placeholder polaroid">
+                        <img src="galeria/4.jpg" alt="Wspomnienie 4" class="photo-inner-img">
+                        <div class="photo-caption">To Twoja sprawka</div>
+                    </div>
+                </div>
+                <div class="hanging-item tilt-right">
+                    <div class="torn-paper">
+                        <h2>Przełamanie lodów...</h2>
+                        <p>Pewnego razu w końcu przełamaliśmy lody i oboje zapragnęliśmy patrzeć na siebie sympatyczniej. Mimo wszystko zaczęło brakować nam obecności tej drugiej osoby, gdy jedno z nas zostawało samo...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Node 5 -->
+            <div class="memory-node">
+                <div class="hanging-item tilt-left">
+                    <div class="torn-paper">
+                        <h2>Pierwsze tęsknoty...</h2>
+                        <p>Zaczęły się myśli w głowie. Żadne z nas nie potrafiło ogarnąć tego bałaganu, który był spowodowany niezwykłą obecnością drugiej osoby...</p>
+                    </div>
+                </div>
+                <div class="hanging-item tilt-right photo-item">
+                    <div class="photo-placeholder polaroid">
+                        <img src="galeria/5.jpg" alt="Wspomnienie 5" class="photo-inner-img">
+                        <div class="photo-caption">Pierwsze wspólne focio</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Node 6 -->
+            <div class="memory-node">
+                <div class="hanging-item tilt-right photo-item">
+                    <div class="photo-placeholder polaroid">
+                        <img src="galeria/6.jpg" alt="Wspomnienie 6" class="photo-inner-img">
+                        <div class="photo-caption">Nocne oglądanie</div>
+                    </div>
+                </div>
+                <div class="hanging-item tilt-left">
+                    <div class="torn-paper">
+                        <h2>Pierwsze odczucie bliskości...</h2>
+                        <p>Pewnego razu, nie wiadomo dlaczego, jak i po co, poszybowaliśmy z głową w chmurach i żyliśmy bardzo blisko siebie, niczym nierozłączne papużki...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Node 7 -->
+            <div class="memory-node">
+                <div class="hanging-item tilt-right">
+                    <div class="torn-paper">
+                        <h2>Pierwszy smutek...</h2>
+                        <p>Kiedy pierwszy raz okazało się, że znaczymy dla siebie coś więcej niż tylko wrogów, cholernie brakowało nam bliskości, którą oboje się obdarzyliśmy tamtego lata...</p>
+                    </div>
+                </div>
+                <div class="hanging-item tilt-left tilt-more photo-item">
+                    <div class="photo-placeholder polaroid">
+                        <img src="galeria/7.jpg" alt="Wspomnienie 7" class="photo-inner-img">
+                        <div class="photo-caption">Jedno z pierwszych zdjęć</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Node 8 -->
+            <div class="memory-node">
+                <div class="hanging-item tilt-left tilt-more photo-item">
+                    <div class="photo-placeholder polaroid">
+                        <img src="galeria/8.jpg" alt="Wspomnienie 8" class="photo-inner-img">
+                        <div class="photo-caption">Obrażony dzieciak</div>
+                    </div>
+                </div>
+                <div class="hanging-item tilt-none">
+                    <div class="torn-paper">
+                        <h2>Szczere rozmowy...</h2>
+                        <p>Zaczęliśmy spędzać czas na telefonach jak nigdy przedtem. Potrafiliśmy przegadać wszystko, co spotkało nas w ciągu dnia, i ciągle nie mieliśmy siebie dość...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Node 9 -->
+            <div class="memory-node">
+                <div class="hanging-item tilt-right">
+                    <div class="torn-paper">
+                        <h2>Pierwsze uczucia...</h2>
+                        <p>Po nocnych rozterkach zaczęło do nas docierać coś więcej. Że on ani ona nie jest tylko wrogiem, ale kimś o wiele ważniejszym...</p>
+                    </div>
+                </div>
+                <div class="hanging-item tilt-left photo-item">
+                    <div class="photo-placeholder polaroid">
+                        <img src="galeria/9.jpg" alt="Wspomnienie 9" class="photo-inner-img">
+                        <div class="photo-caption">Księżniczka w opałach</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Node 10 -->
+            <div class="memory-node">
+                <div class="hanging-item tilt-left photo-item">
+                    <div class="photo-placeholder polaroid">
+                        <img src="galeria/10.jpg" alt="Wspomnienie 10" class="photo-inner-img">
+                        <div class="photo-caption">Book Time!!!</div>
+                    </div>
+                </div>
+                <div class="hanging-item tilt-right">
+                    <div class="torn-paper">
+                        <h2>Pierwsze słowa...</h2>
+                        <p>Po długich nocach spędzonych na szczerych rozmowach i analizowaniu siebie nawzajem, w końcu padły te pierwsze, najważniejsze słowa...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Node 11 -->
+            <div class="memory-node">
+                <div class="hanging-item tilt-left">
+                    <div class="torn-paper">
+                        <h2>Od wrogości do miłości</h2>
+                        <p>Padły słowa pełne emocji, którymi darzę Cię po dziś dzień. Słowa pełne empatii i uczuć, znaczące więcej niż wszystko inne na tym świecie...</p>
+                    </div>
+                </div>
+                <div class="hanging-item tilt-right photo-item">
+                    <div class="photo-placeholder polaroid">
+                        <img src="galeria/11.jpg" alt="Wspomnienie 11" class="photo-inner-img">
+                        <div class="photo-caption">Dzieciak mały</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Node 12 -->
+            <div class="memory-node">
+                <div class="hanging-item tilt-right photo-item">
+                    <div class="photo-placeholder polaroid">
+                        <img src="galeria/12.jpg" alt="Wspomnienie 12" class="photo-inner-img">
+                        <div class="photo-caption">Ukradziono mi bluzę</div>
+                    </div>
+                </div>
+                <div class="hanging-item tilt-none">
+                    <div class="torn-paper">
+                        <h2>Kocham Cię...</h2>
+                        <p>Te słowa zapoczątkowały całą naszą historię, przez którą dziś oboje stąpamy razem, pomimo przeszkód, trudności czy odległości, która nas dzieli...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Node 13 -->
+            <div class="memory-node">
+                <div class="hanging-item tilt-left">
+                    <div class="torn-paper">
+                        <h2>Dziś ważny dzień</h2>
+                        <p>Twoje urodziny zawsze będą dla mnie najpiękniejszym dniem, na zawsze. Gdy tylko pomyślę o Tobie, ukazuje się na mojej twarzy uśmiech pełen szczerych emocji.</p>
+                    </div>
+                </div>
+                <div class="hanging-item tilt-right tilt-more photo-item">
+                    <div class="photo-placeholder polaroid">
+                        <img src="galeria/13.jpg" alt="Wspomnienie 13" class="photo-inner-img">
+                        <div class="photo-caption">&lt;33333333</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Node 14: End -->
+            <div class="memory-node">
+                <div class="hanging-item tilt-left photo-item">
+                    <div class="photo-placeholder polaroid">
+                        <img src="galeria/14.jpg" alt="Wspomnienie 14" class="photo-inner-img">
+                        <div class="photo-caption">Kocham Twój uśmiech!</div>
+                    </div>
+                </div>
+                <div class="hanging-item tilt-right">
+                    <div class="torn-paper end-paper">
+                        <h2>Wszystkiego Najlepszego Gwiazdeczko!</h2>
+                        <p>W dniu Twoich urodzin mam ogromną nadzieję, że wszystkie Twoje marzenia się spełnią. Że nigdy nie będzie Ci brakowało miłości od Twojej drugiej połówki i że na Twojej twarzy będzie zawsze gościł uśmiech, z którym Ci tak do twarzy... Kocham Cię, Twój Szczurek &lt;3</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Finał - Wspaniały 3-warstwowy Tort Urodzinowy na stoliku -->
+    <div class="finale-section">
+        <div class="birthday-cake" id="interactiveCake">
+            <div class="blow-hint">stuknij szybko 3x<br>by zdmuchnąć!!</div>
+            
+            <div class="candles-wrapper">
+                <div class="special-candle">
+                    <div class="candle-flame"></div>
+                    <div class="candle-wick"></div>
+                    <div class="candle-wax">1</div>
+                </div>
+                <div class="special-candle">
+                    <div class="candle-flame"></div>
+                    <div class="candle-wick"></div>
+                    <div class="candle-wax">9</div>
+                </div>
+            </div>
+
+            <!-- Three Tiers -->
+            <div class="cake-tier tier-1"></div>
+            <div class="cake-tier tier-2"></div>
+            <div class="cake-tier tier-3"></div>
+
+            <div class="cake-plate"></div>
+        </div>
+        
+        <!-- Blat okrągłego stolika -->
+        <div class="table-surface"></div>
+    </div>
+
+    <canvas id="confetti-canvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
