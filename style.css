@@ -1,0 +1,557 @@
+/* style.css */
+
+:root {
+    --bg-color: #f4ebde; 
+    --text-color: #222;
+    --paper-lines: #a5b1c2;
+    --font-ui: 'Inter', sans-serif;
+    --font-hand: 'Caveat', cursive;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-ui);
+    overflow-x: hidden; 
+}
+
+/* --- Typographical Hint --- */
+.intro-hint {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-family: var(--font-hand);
+    font-size: 1.5rem;
+    color: #888;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0.8;
+}
+.intro-hint span { display: block; text-align: center; font-size: 2rem; animation: bounce 2s infinite;}
+@keyframes bounce { 
+    0%, 100% { transform: translateY(0); } 
+    50% { transform: translateY(10px); } 
+}
+
+/* --- Heart Balloon Design --- */
+.balloon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    z-index: 10;
+    position: relative;
+    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(2px 5px 10px rgba(0,0,0,0.1));
+}
+
+.heart-balloon {
+    width: 280px;
+    height: 250px;
+    background: radial-gradient(circle at 30% 30%, #ff7675, #d63031);
+    /* Wektorowa maska serca, by zawsze utrzymywało idealny kształt */
+    clip-path: path('M 140 250 C 140 250, 0 160, 0 80 C 0 30, 40 0, 80 0 C 110 0, 140 20, 140 50 C 140 20, 170 0, 200 0 C 240 0, 280 30, 280 80 C 280 160, 140 250, 140 250');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heart-balloon h1 {
+    font-family: var(--font-hand);
+    color: #fff;
+    font-size: 3.5rem;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    margin-top: -30px; /* Lekkie przesunięcie, bo środek serca optycznie wypada wyżej */
+    line-height: 1;
+    padding: 0 10px;
+}
+
+.balloon-tie {
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid #c0392b;
+    margin-top: -4px; /* Przyklejony idealnie pod spiczastym końcem serca */
+    z-index: 5;
+    border-radius: 4px;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-1deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+/* --- Main Layout --- */
+.scroll-container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+/* --- Central Rope --- */
+.central-rope {
+    position: absolute;
+    top: -50px;
+    bottom: 40px; /* Kończy się dokładnie przed samym dnem kontenera (na osi zdjęć) */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    background: #ba8e66;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #7a5535 10px, #7a5535 12px);
+    z-index: 0;
+}
+
+/* --- Content Wrapper & Nodes --- */
+.timeline-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px; 
+    width: 100%;
+    z-index: 1; /* Above the rope */
+}
+
+.memory-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    padding: 0 15px;
+}
+
+.hanging-item {
+    position: relative;
+    /* Optional: margin negative logic to overlap the rope */
+}
+
+/* --- Torn Notebook Paper --- */
+.torn-paper {
+    background-color: #fff;
+    background-image: repeating-linear-gradient(transparent, transparent 33px, var(--paper-lines) 33px, var(--paper-lines) 34px);
+    width: 90vw;
+    max-width: 360px;
+    padding: 40px 40px 40px 70px;
+    position: relative;
+    box-shadow: 2px 8px 20px rgba(0,0,0,0.06);
+    border-radius: 3px 8px 8px 3px;
+    border-top: 1px solid #eee;
+    border-right: 1px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    font-family: var(--font-hand);
+    color: #1a1a1a;
+}
+.torn-paper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 16px; bottom: 0; width: 24px;
+    background-image: radial-gradient(circle, var(--bg-color) 7px, transparent 8px);
+    background-size: 100% 34px; 
+    background-position: center top -2px; 
+    border-right: 1px solid #f09090; 
+}
+
+.torn-paper h2 {
+    font-size: 2.2rem;
+    margin-bottom: 5px; 
+    line-height: 34px;
+    color: #e74c3c; 
+    font-weight: 700;
+}
+.torn-paper p {
+    font-size: 1.6rem;
+    line-height: 34px; 
+}
+
+/* --- Photo Frame (Polaroid) --- */
+.polaroid {
+    background: #fff;
+    padding: 15px 15px 70px 15px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 90vw;
+    max-width: 320px;
+    height: 380px;
+    border: 1px solid #eee;
+    position: relative;
+}
+.photo-inner {
+    background-color: #f0f0f0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #999;
+    font-size: 0.85rem;
+    padding: 20px;
+    border: 1px dashed #ccc;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+}
+.photo-inner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-caption {
+    position: absolute;
+    bottom: 22px;
+    left: 0;
+    width: 100%;
+    padding: 0 5px;
+    text-align: center;
+    font-family: var(--font-hand);
+    font-size: 1.7rem;
+    color: #4a4a4a;
+    z-index: 2;
+}
+
+/* --- Tilts --- */
+.tilt-left { transform: rotate(-2deg); }
+.tilt-right { transform: rotate(3deg); }
+.tilt-more { transform: rotate(-4deg); }
+.tilt-none { transform: rotate(0); }
+
+
+
+#confetti-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+body.locked {
+    overflow: hidden;
+}
+
+/* ========================================================= */
+/* INTRO GATES                                               */
+/* ========================================================= */
+.intro-gates {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 10000;
+    display: flex;
+}
+
+.gate {
+    position: absolute;
+    top: 0;
+    width: 50vw;
+    height: 100vh;
+    background-color: #ebdaca; 
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(0,0,0,0.02) 20px, rgba(0,0,0,0.02) 40px);
+    transition: transform 1.5s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 1;
+}
+
+.left-gate {
+    left: 0;
+    transform-origin: left;
+    border-right: 4px solid #ba8e66;
+    box-shadow: inset -10px 0 20px rgba(0,0,0,0.08); /* efekt głębi otwieranych drzwi */
+}
+
+.right-gate {
+    right: 0;
+    transform-origin: right;
+    border-left: 4px solid #ba8e66;
+    box-shadow: inset 10px 0 20px rgba(0,0,0,0.08);
+}
+
+.intro-gates.open .left-gate { transform: translateX(-100vw); }
+.intro-gates.open .right-gate { transform: translateX(100vw); }
+
+.gate-content {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    transition: opacity 0.8s ease, transform 1.2s ease;
+}
+
+.intro-gates.open .gate-content {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(2);
+}
+
+.intro-heart {
+    width: 280px;
+    height: 250px;
+    background: radial-gradient(circle at 30% 30%, #ff7675, #d63031);
+    clip-path: path('M 140 250 C 140 250, 0 160, 0 80 C 0 30, 40 0, 80 0 C 110 0, 140 20, 140 50 C 140 20, 170 0, 200 0 C 240 0, 280 30, 280 80 C 280 160, 140 250, 140 250');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: heartBeat 1.5s infinite;
+}
+
+.intro-heart h1 {
+    font-family: var(--font-hand);
+    color: #fff;
+    font-size: 3.5rem;
+    text-align: center;
+    line-height: 1;
+    margin-top: -20px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.13); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.13); }
+    70% { transform: scale(1); }
+}
+
+/* ========================================================= */
+/* BIRTHDAY CAKE FINALE & TABLE                              */
+/* ========================================================= */
+.finale-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 60px;
+    width: 100%;
+}
+
+.birthday-cake {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10; /* Ciasto ponad stołem */
+    cursor: pointer; /* Zmienia kursor by sygnalizować interakcję przy stukaniu */
+}
+
+.blow-hint {
+    font-family: var(--font-hand);
+    font-size: 1.35rem;
+    color: #555;
+    opacity: 0.6;
+    transform: rotate(-2deg);
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    line-height: 1.3;
+    text-align: center;
+}
+
+.table-surface {
+    width: 100vw; 
+    height: 180px; /* Pokrywa całą resztę dołu strony */
+    background: #5d4037; /* Ciemniejszy, dębowy front stołu lub wnęka */
+    background-image: repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0,0,0,0.05) 40px, rgba(0,0,0,0.05) 80px); /* Delikatne podziały desek frontowych */
+    border-radius: 0; /* Prosty stolik przez całą szerokość */
+    border-top: 35px solid #8d6e63; /* Jasny, oświetlony blat stołu z góry */
+    box-shadow: inset 0 15px 30px rgba(0,0,0,0.6); /* Głęboki uskok pod blatem (cień) */
+    margin-top: -20px; /* Nasuwa się lekko na dół patery tak, by patera stała dokładnie na środku blatu */
+    z-index: 1; /* Z tyłu i pod ciastem */
+    position: relative;
+}
+
+.cake-tier {
+    position: relative;
+    border-radius: 8px 8px 0 0;
+    box-shadow: inset -15px 0 20px rgba(0,0,0,0.06), 0 5px 10px rgba(0,0,0,0.05); /* 3D depth */
+    display: flex;
+    justify-content: center;
+}
+
+/* Czekoladowo/Kremowe najwyższe piętro z posypką */
+.tier-1 {
+    width: 140px;
+    height: 65px;
+    background: #f8c291; 
+    border-top: 15px solid #fff; 
+    z-index: 3;
+}
+.tier-1::after {
+    content: '';
+    position: absolute; top: -1px; left: 10px;
+    width: 15px; height: 30px; background: #fff; border-radius: 0 0 10px 10px;
+    box-shadow: 25px 5px 0 -2px #fff, 55px 15px 0 -3px #fff, 85px 5px 0 -4px #fff, 105px 15px 0 0 #fff;
+}
+.tier-1::before {
+    content: '';
+    position: absolute; top: 25px; left: 15px;
+    width: 6px; height: 12px; background: #eb2f06; border-radius: 3px; transform: rotate(35deg);
+    box-shadow: 25px -5px 0 #4a69bd, 50px 10px 0 #e58e26, 80px 0px 0 #78e08f, 100px 15px 0 #eb2f06;
+}
+
+/* Malinowo-różowe środkowe piętro */
+.tier-2 {
+    width: 220px;
+    height: 75px;
+    background: #ffb8b8; 
+    border-top: 18px solid #f1f2f6; 
+    z-index: 2;
+    margin-top: -10px; /* delikatnie wchodzi pod piętro wyżej */
+}
+.tier-2::after {
+    content: '';
+    position: absolute; top: -1px; left: 15px;
+    width: 18px; height: 35px; background: #f1f2f6; border-radius: 0 0 10px 10px;
+    box-shadow: 35px 10px 0 #f1f2f6, 75px 25px 0 -2px #f1f2f6, 120px 15px 0 #f1f2f6, 155px -5px 0 #f1f2f6, 180px 20px 0 #f1f2f6;
+}
+.tier-2::before {
+    content: '';
+    position: absolute; bottom: 15px; left: 20px;
+    width: 10px; height: 10px; background: #fff; border-radius: 50%; opacity: 0.8;
+    box-shadow: 30px -10px 0 #fff, 60px 0px 0 #fff, 90px -15px 0 #fff, 120px 5px 0 #fff, 150px -10px 0 #fff, 180px 0px 0 #fff;
+}
+
+/* Waniliowo-niebieskie, masywne dolne piętro */
+.tier-3 {
+    width: 280px;
+    height: 85px;
+    background: #82ccdd; 
+    border-top: 20px solid #fff;
+    z-index: 1;
+    margin-top: -10px; 
+}
+.tier-3::after {
+    content: '';
+    position: absolute; top: -1px; left: 20px;
+    width: 20px; height: 40px; background: #fff; border-radius: 0 0 10px 10px;
+    box-shadow: 45px -5px 0 -2px #fff, 90px 20px 0 #fff, 135px 10px 0 -3px #fff, 180px 30px 0 -2px #fff, 220px 5px 0 #fff;
+}
+.tier-3::before {
+    /* Dekoracyjna falbanka na dole */
+    content: '';
+    position: absolute; bottom: 0; left: 7px;
+    width: 22px; height: 22px; background: #f8a5c2; border-radius: 50%;
+    box-shadow: 25px 0 0 #f8a5c2, 50px 0 0 #f8a5c2, 75px 0 0 #f8a5c2, 100px 0 0 #f8a5c2, 125px 0 0 #f8a5c2, 150px 0 0 #f8a5c2, 175px 0 0 #f8a5c2, 200px 0 0 #f8a5c2, 225px 0 0 #f8a5c2, 245px 0 0 #f8a5c2;
+}
+
+.cake-plate {
+    width: 340px;
+    height: 16px;
+    background: #dcdde1; 
+    border-radius: 50%;
+    margin-top: -8px;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.15), inset 0 3px 6px rgba(255,255,255,0.8);
+    z-index: 0;
+}
+
+.candles-wrapper {
+    display: flex;
+    gap: 15px;
+    margin-bottom: -15px; 
+    z-index: 5;
+}
+
+.special-candle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.candle-wax {
+    font-size: 6.5rem; 
+    font-weight: 900;
+    font-family: 'Inter', sans-serif;
+    line-height: 1;
+    margin-top: -2px;
+    
+    /* Tekstura wosku mieniącego się paskami biało-czerwonymi - MEGA efekt */
+    background: repeating-linear-gradient(-45deg, #fff, #fff 8px, #eb2f06 8px, #eb2f06 18px);
+    background-clip: text; /* standard property for linter warning */
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 2px #b71540; /* Zarys świeczki dookoła */
+    color: transparent; /* Tekst jest przezroczysty, widać gradient nałożony przez "clip" */
+    filter: drop-shadow(2px 5px 4px rgba(0,0,0,0.25));
+}
+
+.candle-wick {
+    width: 3px;
+    height: 8px;
+    background: #2f3640;
+    border-radius: 2px;
+    margin-bottom: -4px; /* wchodzi w pole tekstowe świecy powodując brak przerw i iluzje trójwymiaru knotu */
+    z-index: 0;
+}
+
+.candle-flame {
+    width: 20px;
+    height: 35px;
+    background: #fbc531;
+    border-radius: 50% 50% 20% 20%;
+    box-shadow: 0 0 15px #e1b12c, 0 0 30px #fbc531, 0 0 45px #e84118;
+    animation: flicker 0.25s infinite alternate;
+    z-index: 1;
+}
+
+@keyframes flicker {
+    0% { transform: scale(1) rotate(-2deg); opacity: 0.85; }
+    100% { transform: scale(1.18) rotate(3deg); opacity: 1; box-shadow: 0 0 20px #e1b12c, 0 0 35px #fbc531, 0 0 55px #e84118; }
+}
+
+.candle-flame.extinguished {
+    animation: none !important;
+    opacity: 0 !important;
+    transition: opacity 0.4s ease-out;
+}
+
+/* Pop-bounce po kliknięciu w tort */
+@keyframes cakePop {
+    0%   { transform: scale(1); }
+    30%  { transform: scale(1.07) rotate(-1deg); }
+    55%  { transform: scale(0.97) rotate(0.5deg); }
+    75%  { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+.birthday-cake.popping {
+    animation: cakePop 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+/* Pasek z podpowiedzią i licznikiem nad tortem */
+.cake-hints-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 12px;
+    padding: 0 20px;
+    width: 100%;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+/* Licznik kliknięć */
+.click-counter {
+    font-family: var(--font-hand);
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #e74c3c;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    filter: drop-shadow(1px 2px 4px rgba(0,0,0,0.1));
+    transition: opacity 0.5s ease;
+}
+.click-counter small {
+    font-size: 1.2rem;
+    color: #999;
+    display: block;
+    margin-top: 2px;
+}
+
+/* Animacja "pip" liczby przy każdym kliknięciu */
+@keyframes numPop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.4); }
+    100% { transform: scale(1); }
+}
+.click-counter.num-pop {
+    animation: numPop 0.2s ease-out;
+}
