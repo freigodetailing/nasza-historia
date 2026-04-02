@@ -1,0 +1,216 @@
+/* style.css */
+
+:root {
+    --bg-color: #f4ebde; 
+    --text-color: #222;
+    --paper-lines: #a5b1c2;
+    --font-ui: 'Inter', sans-serif;
+    --font-hand: 'Caveat', cursive;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-ui);
+    overflow-x: hidden; 
+}
+
+/* --- Typographical Hint --- */
+.intro-hint {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-family: var(--font-hand);
+    font-size: 1.5rem;
+    color: #888;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0.8;
+}
+.intro-hint span { display: block; text-align: center; font-size: 2rem; animation: bounce 2s infinite;}
+@keyframes bounce { 
+    0%, 100% { transform: translateY(0); } 
+    50% { transform: translateY(10px); } 
+}
+
+/* --- Heart Balloon Design --- */
+.balloon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    z-index: 10;
+    position: relative;
+    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(2px 5px 10px rgba(0,0,0,0.1));
+}
+
+.heart-balloon {
+    width: 280px;
+    height: 250px;
+    background: radial-gradient(circle at 30% 30%, #ff7675, #d63031);
+    /* Wektorowa maska serca, by zawsze utrzymywało idealny kształt */
+    clip-path: path('M 140 250 C 140 250, 0 160, 0 80 C 0 30, 40 0, 80 0 C 110 0, 140 20, 140 50 C 140 20, 170 0, 200 0 C 240 0, 280 30, 280 80 C 280 160, 140 250, 140 250');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.heart-balloon h1 {
+    font-family: var(--font-hand);
+    color: #fff;
+    font-size: 3.5rem;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    margin-top: -30px; /* Lekkie przesunięcie, bo środek serca optycznie wypada wyżej */
+    line-height: 1;
+    padding: 0 10px;
+}
+
+.balloon-tie {
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid #c0392b;
+    margin-top: -4px; /* Przyklejony idealnie pod spiczastym końcem serca */
+    z-index: 5;
+    border-radius: 4px;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-1deg); }
+    50% { transform: translateY(-15px) rotate(2deg); }
+}
+
+/* --- Main Layout --- */
+.scroll-container {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+/* --- Central Rope --- */
+.central-rope {
+    position: absolute;
+    top: -50px;
+    bottom: 0; /* spans entire scrolling container */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    background: #ba8e66;
+    background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, #7a5535 10px, #7a5535 12px);
+    z-index: 0;
+}
+
+/* --- Content Wrapper & Nodes --- */
+.timeline-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px; 
+    width: 100%;
+    z-index: 1; /* Above the rope */
+}
+
+.memory-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    width: 100%;
+    padding: 0 15px;
+}
+
+.hanging-item {
+    position: relative;
+    /* Optional: margin negative logic to overlap the rope */
+}
+
+/* --- Torn Notebook Paper --- */
+.torn-paper {
+    background-color: #fff;
+    background-image: repeating-linear-gradient(transparent, transparent 33px, var(--paper-lines) 33px, var(--paper-lines) 34px);
+    width: 90vw;
+    max-width: 360px;
+    padding: 40px 40px 40px 70px;
+    position: relative;
+    box-shadow: 2px 8px 20px rgba(0,0,0,0.06);
+    border-radius: 3px 8px 8px 3px;
+    border-top: 1px solid #eee;
+    border-right: 1px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    font-family: var(--font-hand);
+    color: #1a1a1a;
+}
+.torn-paper::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 16px; bottom: 0; width: 24px;
+    background-image: radial-gradient(circle, var(--bg-color) 7px, transparent 8px);
+    background-size: 100% 34px; 
+    background-position: center top -2px; 
+    border-right: 1px solid #f09090; 
+}
+
+.torn-paper h2 {
+    font-size: 2.2rem;
+    margin-bottom: 5px; 
+    line-height: 34px;
+    color: #e74c3c; 
+    font-weight: 700;
+}
+.torn-paper p {
+    font-size: 1.6rem;
+    line-height: 34px; 
+}
+
+/* --- Photo Frame (Polaroid) --- */
+.polaroid {
+    background: #fff;
+    padding: 15px 15px 70px 15px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 90vw;
+    max-width: 320px;
+    height: 380px;
+    border: 1px solid #eee;
+    position: relative;
+}
+.photo-inner {
+    background-color: #f0f0f0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #999;
+    font-size: 0.85rem;
+    padding: 20px;
+    border: 1px dashed #ccc;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.02);
+}
+.photo-inner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- Tilts --- */
+.tilt-left { transform: rotate(-2deg); }
+.tilt-right { transform: rotate(3deg); }
+.tilt-more { transform: rotate(-4deg); }
+.tilt-none { transform: rotate(0); }
+
+
+
+#confetti-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+}
